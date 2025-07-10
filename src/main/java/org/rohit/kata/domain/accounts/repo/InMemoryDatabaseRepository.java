@@ -1,19 +1,21 @@
-package org.rohit.kata.domain.transfer.repo;
+package org.rohit.kata.domain.accounts.repo;
 
 import org.rohit.kata.domain.accounts.Account;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class InMemoryDatabaseRepository {
+public class InMemoryDatabaseRepository implements AccountRepository {
     private final List<Account> database= new CopyOnWriteArrayList<>();
 
+    @Override
     public void save(Account account) {
         database.add(account);
     }
 
-    public boolean check(String accountId) {
+    @Override
+    public boolean hasAccount(String accountId) {
         return database.stream()
-                .anyMatch(account -> account.getAcc().equals(accountId));
+                .anyMatch(account -> account.getAccountId().equals(accountId));
     }
 }

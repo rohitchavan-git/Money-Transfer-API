@@ -1,4 +1,4 @@
 package org.rohit.kata.domain.transfer.exception;
 
-public class InvalidAmountException {
+public class InvalidAmountException extends Exception {
 }
